@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import React, { useState } from "react";
 import Home from "./index";
 import DashCaseManager from "./components/DashCaseManager";
+import LogoutAlert from "./components/LogoutAlert";
 
 
 function MyApp({ Component, pageProps }) {
@@ -31,8 +32,7 @@ function MyApp({ Component, pageProps }) {
     setUser({
       username: "",
       password: ""
-    })
-
+    });
   }
 
   {/*
@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }) {
         {(user.username != "") ? (
             <DashCaseManager Logout={Logout}/>
         ):(
-            <DashCaseManager Logout={Logout}/>
+            <Home Login={Login} error={error}/>
         )}
       </div>
   );

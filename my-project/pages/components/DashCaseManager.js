@@ -16,7 +16,8 @@ import {
     LogoutIcon,
 } from '@heroicons/react/outline'
 import { SearchIcon } from '@heroicons/react/solid'
-import Logout from '../_app'
+import LogoutAlert from "./LogoutAlert";
+import Logout from "./LogoutAlert";
 
 const navigation = [
     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -37,12 +38,8 @@ function classNames(...classes) {
 
 export default function DashCaseManager({ Logout }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
     {/*Local Details*/}
-    const [details, setDetails] = useState({username:"", password:""});
-    const submitHandler = e => {
-        e.preventDefault();
-        Logout(details);
-    }
 
     return (
         <>
@@ -226,7 +223,10 @@ export default function DashCaseManager({ Logout }) {
                                                                 active ? 'bg-gray-100' : '',
                                                                 'block px-4 py-2 text-sm text-gray-700'
                                                             )}
-                                                            onClick={(item.name == 'Abmelden') ? Logout : ''}
+                                                            onClick={(item.name == "Abmelden") ? () => {
+                                                                setModalOpen(true);
+                                                                console.log("Abmelden geklickt");
+                                                            } : ""}
                                                         >
                                                             <div className="flex">
                                                                 <item.icon className="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" aria-hidden="true" />
@@ -251,7 +251,9 @@ export default function DashCaseManager({ Logout }) {
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                                 {/* Content */}
                                 <div className="py-4">
-                                    <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
+                                    <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
+                                        {modalOpen && <LogoutAlert Logout={Logout} setOpenModal={setModalOpen} />}
+                                    </div>
                                 </div>
                                 {/* /End Content */}
                             </div>
