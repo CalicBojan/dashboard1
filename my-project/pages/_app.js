@@ -35,15 +35,27 @@ function MyApp({ Component, pageProps }) {
 
   }
 
-  return(
+  {/*
+    return(
       <div className="App">
         {(user.username != "") ? (
-            <DashCaseManager />
+            <DashCaseManager Logout={Logout}/>
         ):(
             <Home Login={Login} error={error}/>
         )}
       </div>
   );
 }
+  */}
+  return(
+      <div className="App">
+        {(user.username != "") ? (
+            <DashCaseManager Logout={Logout}/>
+        ):(
+            <DashCaseManager Logout={Logout}/>
+        )}
+      </div>
+  );
+}
 
-export default MyApp
+export default MyApp;
