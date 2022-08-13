@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Auftrag.module.css'
 
-const auftraege = [
-    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Bearbeitbar"},
+let auftraege = [
+    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Auftrag", status: "Bearbeitbar"},
     {id: 65987, caseManager: "Michael Lang", patient: 12154, producer: "", phase: "Kalkulation", status: "In Bearbeitung"},
     {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "NC"},
 
@@ -11,7 +11,7 @@ const auftraege = [
 
 export default function Auftrag() {
     return (
-        <ul id={"Kalkulation"} role="list" className="space-y-2 block justify-center">
+        <ul role="list" className="space-y-2 block justify-center">
             {auftraege.map((auftrag) => (
                 <div className={styles.case}>
                     <li key={auftrag.id}

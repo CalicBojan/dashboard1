@@ -1,17 +1,15 @@
 import React from 'react';
-import styles from './Kalkulation.module.css'
+import styles from './Abschluss.module.css'
+import { TrashIcon } from '@heroicons/react/solid'
 
 let auftraege = [
-    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Bearbeitbar"},
-    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Bearbeitbar"},
-    {id: 65987, caseManager: "Michael Lang", patient: 12154, producer: "", phase: "Kalkulation", status: "In Bearbeitung"},
-    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Freigeben"},
-    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Freigeben"},
+    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "Hanne Jost", phase: "Kalkulation", status: "Ausblendbar"},
+    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "Maria Lenz", phase: "Kalkulation", status: "Ausblendbar"},
 
     // More items...
 ]
 
-export default function Kalkulation() {
+export default function Abschluss() {
     return (
         <ul role="list" className="space-y-2 block justify-center">
             {auftraege.map((auftrag) => (
@@ -61,6 +59,9 @@ export default function Kalkulation() {
                                         className='w-3 h-3 rounded-full bg-red-700'
                                         aria-hidden="true"
                                     /> : ""}
+                                </div>
+                                <div className="inline-flex">
+                                    {(auftrag.status == "Ausblendbar") ? <TrashIcon className="flex-shrink-0 h-3 w-3 text-black" aria-hidden="true" /> : ""}
                                 </div>
                             </div>
                         </div>

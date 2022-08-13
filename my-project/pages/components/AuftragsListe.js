@@ -2,6 +2,9 @@ import Auftrag from "./Auftrag";
 import Kalkulation from "./Kalkulation";
 import React from "react";
 import styles from './AuftragsListe.module.css'
+import Bestaetigung from "./Bestaetigung";
+import Produktion from "./Produktion";
+import Abschluss from "./Abschluss";
 
 
 export default function AuftragsListe() {
@@ -33,7 +36,7 @@ export default function AuftragsListe() {
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Bestätigung</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
-                            <Auftrag />
+                            <Bestaetigung />
                         </div>
                     </div>
                 </div>
@@ -43,7 +46,7 @@ export default function AuftragsListe() {
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Produktion</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
-                            <Auftrag />
+                            <Produktion />
                         </div>
                     </div>
                 </div>
@@ -53,7 +56,7 @@ export default function AuftragsListe() {
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Abschluss</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
-                            <Auftrag />
+                            <Abschluss />
                         </div>
                     </div>
                 </div>

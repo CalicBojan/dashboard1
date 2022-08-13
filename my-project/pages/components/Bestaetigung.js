@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './Kalkulation.module.css'
+import styles from './Bestaetigung.module.css'
 
 let auftraege = [
     {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Bearbeitbar"},
-    {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Bearbeitbar"},
+    {id: 65987, caseManager: "Michael Lang", patient: 12154, producer: "", phase: "Kalkulation", status: "In Bearbeitung"},
+    {id: 65987, caseManager: "Michael Lang", patient: 12154, producer: "", phase: "Kalkulation", status: "In Bearbeitung"},
     {id: 65987, caseManager: "Michael Lang", patient: 12154, producer: "", phase: "Kalkulation", status: "In Bearbeitung"},
     {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Freigeben"},
     {id: 65987, caseManager: "Bojan Calic", patient: 12154, producer: "", phase: "Kalkulation", status: "Freigeben"},
@@ -11,7 +12,7 @@ let auftraege = [
     // More items...
 ]
 
-export default function Kalkulation() {
+export default function Bestaetigung() {
     return (
         <ul role="list" className="space-y-2 block justify-center">
             {auftraege.map((auftrag) => (
