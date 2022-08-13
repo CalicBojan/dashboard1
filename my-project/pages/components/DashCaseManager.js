@@ -15,11 +15,13 @@ import {
     PrinterIcon,
     LogoutIcon,
 } from '@heroicons/react/outline'
-import { SearchIcon } from '@heroicons/react/solid'
+import {PlusIcon, SearchIcon} from '@heroicons/react/solid'
 import LogoutAlert from "./LogoutAlert";
 import Logout from "./LogoutAlert";
 import Auftrag from "./Auftrag";
 import AuftragsListe from "./AuftragsListe";
+import styles from "./AuftragsListe.module.css";
+import Abschluss from "./Abschluss";
 
 const navigation = [
     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -129,7 +131,7 @@ export default function DashCaseManager({ Logout }) {
                 </Transition.Root>
 
                 {/* Static sidebar for desktop */}
-                <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+                <div className="hidden md:flex md:w-52 md:flex-col md:fixed md:inset-y-0">
 
                     {/* Sidebar component */}
                     <div className="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
@@ -155,7 +157,7 @@ export default function DashCaseManager({ Logout }) {
                         </div>
                     </div>
                 </div>
-                <div className="md:pl-64 flex flex-col flex-1">
+                <div className="md:pl-52 flex flex-col flex-1">
                     <div className="sticky top-0 z-10 flex-shrink-0 flex h-12 bg-white shadow">
                         <button
                             type="button"
@@ -254,16 +256,34 @@ export default function DashCaseManager({ Logout }) {
                             </div>
                             */}
 
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                            <div className="max-w-7xl px-1 sm:px-2 md:px-0">
                                 {/* Content */}
 
-                                <div className="py-4">
+
                                     <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
-                                        <AuftragsListe />
+                                        {/*Button und Filter*/}
+                                        <div className="flex justify-evenly">
+                                            <AuftragsListe />
+                                            <div className="block pt-12">
+                                                <div className="mt-2 flex">
+                                                    <button
+                                                        type="button"
+                                                        className="inline-flex items-center px-4 py-4 border border-transparent shadow-sm text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    >
+                                                        <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                                                    </button>
+                                                    <div className="ml-4 self-center text-xl font-semibold text-indigo-600">
+                                                        Neuer Auftrag
+                                                    </div>
+                                                </div>
+                                                <div className="mt-8 bg-white shadow-lg px-1 py-2 sm:px-2 w-56 sm:rounded-md text-xs ">
+                                                        Filteroptionen
+                                                </div>
+                                            </div>
+
+                                        </div>
                                         {modalOpen && <LogoutAlert Logout={Logout} setOpenModal={setModalOpen} />}
                                     </div>
-
-                                </div>
                                 {/* /End Content */}
                             </div>
                         </div>

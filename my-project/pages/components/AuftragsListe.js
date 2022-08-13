@@ -12,7 +12,7 @@ export default function AuftragsListe() {
             <div className="flex justify-between">
 
                 {/*Titel von Säule und Auftragsliste*/}
-                <div className="block">
+                <div className="block pl-2. pr-1">
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Kalkulation</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
@@ -22,7 +22,7 @@ export default function AuftragsListe() {
                 </div>
 
                 {/*Titel von Säule und Auftragsliste*/}
-                <div className="block">
+                <div className="block pl-1 pr-1">
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Auftrag</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
@@ -32,7 +32,7 @@ export default function AuftragsListe() {
                 </div>
 
                 {/*Titel von Säule und Auftragsliste*/}
-                <div className="block">
+                <div className="block pl-1 pr-1">
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Bestätigung</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
@@ -42,7 +42,7 @@ export default function AuftragsListe() {
                 </div>
 
                 {/*Titel von Säule und Auftragsliste*/}
-                <div className="block">
+                <div className="block pl-1 pr-1">
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Produktion</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
@@ -52,7 +52,7 @@ export default function AuftragsListe() {
                 </div>
 
                 {/*Titel von Säule und Auftragsliste*/}
-                <div className="block">
+                <div className="block pl-1 pr-2">
                     <h1 className="text-2xl font-semibold text-indigo-600 pb-2">Abschluss</h1>
                     <div className="bg-white shadow-lg px-1 py-4 sm:px-2 sm:rounded-md w-7/8 text-xs">
                         <div className={styles.columnTest}>
