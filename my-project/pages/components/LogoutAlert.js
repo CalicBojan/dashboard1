@@ -6,7 +6,6 @@ import Logout from "../_app";
 
 export default function LogoutAlert({ Logout ,setOpenModal }) {
     const [open, setOpen] = useState(true);
-    {/*Local Details*/}
 
     return (
         <Transition.Root show={open} as={Fragment}>
