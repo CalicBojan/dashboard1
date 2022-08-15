@@ -31,6 +31,10 @@ import Bestaetigung from "./Bestaetigung";
 import Produktion from "./Produktion";
 import styles2 from './Auftrag.module.css'
 import data from "./MOCK_DATA.json";
+import Badge from "./Badge";
+import Home from "../index";
+import { Listbox } from '@headlessui/react'
+
 
 const navigation = [
     {name: 'Dashboard', href: '#', icon: HomeIcon, current: true},
@@ -51,20 +55,68 @@ function classNames(...classes) {
 
 export default function DashCaseManager({Logout}) {
 
+    {/* Filtered List für Auftrag Phase */}
     const auftraegeFiltered = data.filter(d => d.phase == "Auftrag");
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 
-    const [customer, setCustomer] = useState("");
+    const [filters, setFilters] = useState({
+        customer: "",
+        patient: "",
+        case: "",
+        date: "",
+        phase: "",
+        status: "",
+    });
 
-    const handleCustomerChange = (event) => {
-        console.log("Event activated")
+    const phasesForDropdown = () =>{
+        console.log(...new Set(data.map((item) => item.phase)))
+        return [...new Set(data.map((item) => item.phase))]
+    };
+
+    const statusesForDropdown = () =>{
+        console.log(...new Set(data.map((item) => item.status)))
+        return [...new Set(data.map((item) => item.status))]
+    };
+
+
+    const handleInput = (field) => (event) => {
+        console.log("handleCustomerChange activated")
         const { value } = event.target;
-        setCustomer(value);
-        console.log(value);
-        handleFilterCustomer(value);
-    }
+        setFilters({
+            ...filters,
+            [field]: value,
+        });
+        switch(field){
+            case "phase":
+                console.log(value);
+                handleFilterPhase(value);
+                break;
+            case "status":
+                console.log(value);
+                handleFilterStatus(value);
+                break;
+            case "date":
+                console.log(value);
+                handleFilterDate(value);
+                break;
+            case "customer":
+                console.log(value);
+                handleFilterCustomer(value);
+                break;
+            case "patient":
+                console.log(value);
+                handleFilterPatient(value);
+                break;
+            case "case":
+                console.log(value);
+                handleFilterCase(value);
+                break;
+            default:
+                break;
+        }
+    };
 
     const [allData, setData] =useState(auftraegeFiltered);
 
@@ -74,6 +126,61 @@ export default function DashCaseManager({Logout}) {
             console.log("customer handler activated");
             console.log(fullCostumer);
             if(fullCostumer.toLowerCase().includes(customer.toLowerCase())){
+                return item;
+            }
+        });
+        setData(filteredData);
+    }
+
+    const handleFilterPatient = (patient) => {
+        const filteredData = auftraegeFiltered.filter(item => {
+            const fullPatient = `${item.patient}`;
+            console.log(fullPatient);
+            if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+        setData(filteredData);
+    }
+
+    const handleFilterCase = (patient) => {
+        const filteredData = auftraegeFiltered.filter(item => {
+            const fullCase = `${item.caseNr}`;
+            console.log(fullCase);
+            if(fullCase.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+        setData(filteredData);
+    }
+
+    const handleFilterDate = (date) => {
+        const filteredData = auftraegeFiltered.filter(item => {
+            const fullDate = `${item.datum}`;
+            console.log(fullDate);
+            if(fullDate.includes(date)){
+                return item;
+            }
+        });
+        setData(filteredData);
+    }
+
+    const handleFilterPhase = (phase) => {
+        const filteredData = auftraegeFiltered.filter(item => {
+            const fullPhase = `${item.phase}`;
+            console.log(fullPhase);
+            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
+                return item;
+            }
+        });
+        setData(filteredData);
+    }
+
+    const handleFilterStatus = (status) => {
+        const filteredData = auftraegeFiltered.filter(item => {
+            const fullStatus = `${item.status}`;
+            console.log(fullStatus);
+            if(fullStatus.toLowerCase().includes(status.toLowerCase())){
                 return item;
             }
         });
@@ -384,7 +491,7 @@ export default function DashCaseManager({Logout}) {
 
 
                                         <div className="block pt-12">
-                                            <div className="mt-2 flex">
+                                            <div className="flex">
                                                 <button
                                                     type="button"
                                                     className="inline-flex items-center px-4 py-4 border border-transparent shadow-sm text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -395,34 +502,111 @@ export default function DashCaseManager({Logout}) {
                                                     Neuer Auftrag
                                                 </div>
                                             </div>
-                                            <div
-                                                className="mt-8 bg-white shadow-lg px-1 py-2 sm:px-2 w-56 sm:rounded-md text-xs ">
-
-                                                {/*Datum Input*/}
-                                                <div className="pl-2 pr-2 pt-2">
-                                                    <label htmlFor="date"
-                                                           className="block text-xs font-medium text-indigo-900">Datum</label>
-                                                    <div className="mt-1 relative rounded-xl text-black pb-4">
-                                                        <input type="date" name="date" id="date"
-                                                               className="bg-white focus:border-indigo-500 block w-full py-0.5 px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                               placeholder="Datum"/>
-                                                    </div>
-                                                </div>
-
-                                                {/*KundenID Input*/}
-                                                <div className="pl-2 pr-2 pt-2">
-                                                    <label htmlFor="customer"
-                                                           className="block text-xs font-medium text-indigo-900">Kunden-ID</label>
-                                                    <div className="mt-1 relative rounded-xl text-black pb-4">
-                                                        <input type="text" name="customer" id="customer" onChange={handleCustomerChange}
-                                                               className="bg-white focus:border-indigo-500 block w-full py-0.5 px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                               placeholder="Kunden-ID"/>
-                                                    </div>
-                                                </div>
 
 
+                                            {/*Badge Bedingung*/}
+                                            <div className="pt-3 flex">
+                                                {(filters.case != "") ? (
+                                                    <Badge Titel={"Auftrag"} />
+                                                ):(
+                                                    ""
+                                                )}
                                             </div>
-                                        </div>
+
+                                            <div className={styles2.filterSection}>
+                                                    <div
+                                                        className="bg-white shadow-lg px-1 py-2 sm:px-2 w-56 sm:rounded-md text-xs">
+
+                                                        {/*Datum Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="date"
+                                                                   className="block text-xs font-medium text-indigo-900">Datum</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="date" name="date" id="date" onChange={handleInput("date")} value={filters.date}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Datum"/>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*Phase Input*/}
+                                                        <div className="pl-2 pr-2 pt-2 pb-1">
+                                                            <label htmlFor="phase" className="block text-xs font-medium text-indigo-900 pb-1">
+                                                                Phase
+                                                            </label>
+                                                            <select
+                                                                id="phase"
+                                                                name="phase"
+                                                                className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                onChange={handleInput("phase")}
+                                                                placeholder="Phase"
+                                                            >
+                                                                <option value={filters.phase}></option>
+                                                                {phasesForDropdown().map((phase) =>(
+                                                                    <option value={phase} key={phase}>
+                                                                        {phase}
+                                                                    </option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+
+                                                        {/*Status Input*/}
+                                                        <div className="pl-2 pr-2 pt-2 pb-1">
+                                                            <label htmlFor="phase" className="block text-xs font-medium text-indigo-900 pb-1">
+                                                                Status
+                                                            </label>
+                                                            <select
+                                                                id="phase"
+                                                                name="phase"
+                                                                className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                onChange={handleInput("status")}
+                                                                placeholder="Phase"
+                                                            >
+                                                                <option value={filters.status}></option>
+                                                                {statusesForDropdown().map((status) =>(
+                                                                    <option value={status} key={status}>
+                                                                        {status}
+                                                                    </option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+
+
+                                                        {/*KundenID Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="customer"
+                                                                   className="block text-xs font-medium text-indigo-900">Kunden-ID</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="text" name="customer" id="customer" onChange={handleInput("customer")} value={filters.customer}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Kunden-ID"/>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*PatientenID Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="patient"
+                                                                   className="block text-xs font-medium text-indigo-900">Patienten-ID</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="text" name="patient" id="patient" onChange={handleInput("patient")} value={filters.patient}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Patienten-ID"/>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*Auftragsnummer Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="patient"
+                                                                   className="block text-xs font-medium text-indigo-900">Auftragsnummer</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="text" name="case" id="case" onChange={handleInput("case")} value={filters.case}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Auftragsnummer"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
                                     </div>
                                     {modalOpen && <LogoutAlert Logout={Logout} setOpenModal={setModalOpen}/>}

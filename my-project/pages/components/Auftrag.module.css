@@ -11,3 +11,10 @@
 .status{
     align-content: flex-end;
 }
+
+.filterSection{
+    border-width: thin;
+    border-color: #0070f3;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
