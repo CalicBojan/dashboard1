@@ -4,10 +4,10 @@
     "caseNr": 939,
     "caseManager": "Hartwell",
     "patient": 178,
-    "producer": "Benton",
+    "producer": "",
     "phase": "Kalkulation",
     "status": "Bearbeitbar",
-    "datum": "10/2/2021",
+    "datum": "2021-12-02",
     "customer": 872
   },
   {
@@ -15,10 +15,10 @@
     "caseNr": 929,
     "caseManager": "Sherline",
     "patient": 450,
-    "producer": "Ave",
+    "producer": "",
     "phase": "Kalkulation",
-    "status": "Bearbeitbar",
-    "datum": "12/12/2021",
+    "status": "In Bearbeitung",
+    "datum": "2021-09-02",
     "customer": 120
   },
   {
@@ -26,10 +26,10 @@
     "caseNr": 19,
     "caseManager": "Skip",
     "patient": 166,
-    "producer": "Britni",
+    "producer": "",
     "phase": "Kalkulation",
-    "status": "Bearbeitbar",
-    "datum": "9/1/2021",
+    "status": "In Bearbeitung",
+    "datum": "2021-11-08",
     "customer": 154
   },
   {
@@ -37,10 +37,10 @@
     "caseNr": 119,
     "caseManager": "Freddie",
     "patient": 340,
-    "producer": "Burr",
+    "producer": "",
     "phase": "Kalkulation",
-    "status": "Bearbeitbar",
-    "datum": "2/26/2022",
+    "status": "Freigeben",
+    "datum": "2021-07-16",
     "customer": 67
   },
   {
@@ -51,7 +51,7 @@
     "producer": "",
     "phase": "Auftrag",
     "status": "Bearbeitbar",
-    "datum": "4/4/2022",
+    "datum": "2021-01-11",
     "customer": 955
   },
   {
@@ -62,7 +62,7 @@
     "producer": "",
     "phase": "Auftrag",
     "status": "Bearbeitbar",
-    "datum": "6/25/2022",
+    "datum": "2021-05-06",
     "customer": 598
   },
   {
@@ -73,7 +73,7 @@
     "producer": "",
     "phase": "Auftrag",
     "status": "In Bearbeitung",
-    "datum": "8/19/2021",
+    "datum": "2021-12-22",
     "customer": 219
   },
   {
@@ -84,7 +84,7 @@
     "producer": "",
     "phase": "Auftrag",
     "status": "Freigeben",
-    "datum": "5/12/2022",
+    "datum": "2022-03-10",
     "customer": 931
   },
   {
@@ -95,18 +95,18 @@
     "producer": "",
     "phase": "Auftrag",
     "status": "NC",
-    "datum": "4/26/2022",
-    "customer": 765
+    "datum": "2022-10-03",
+    "customer": 931
   },
   {
     "id": 10,
     "caseNr": 625,
     "caseManager": "Caldwell",
     "patient": 758,
-    "producer": "Norrie",
+    "producer": "",
     "phase": "Bestätigung",
     "status": "Bearbeitbar",
-    "datum": "1/30/2022",
+    "datum": "2022-04-19",
     "customer": 581
   },
   {
@@ -114,10 +114,10 @@
     "caseNr": 623,
     "caseManager": "Lacee",
     "patient": 965,
-    "producer": "Annissa",
+    "producer": "",
     "phase": "Bestätigung",
     "status": "Bearbeitbar",
-    "datum": "9/13/2021",
+    "datum": "2022-01-21",
     "customer": 66
   },
   {
@@ -125,10 +125,10 @@
     "caseNr": 917,
     "caseManager": "Matilde",
     "patient": 894,
-    "producer": "Lewiss",
+    "producer": "",
     "phase": "Bestätigung",
-    "status": "Bearbeitbar",
-    "datum": "11/15/2021",
+    "status": "Freigeben",
+    "datum": "2022-11-10",
     "customer": 66
   },
   {
@@ -136,10 +136,10 @@
     "caseNr": 175,
     "caseManager": "Tiffani",
     "patient": 150,
-    "producer": "Jermain",
+    "producer": "",
     "phase": "Bestätigung",
-    "status": "Bearbeitbar",
-    "datum": "7/31/2022",
+    "status": "NC",
+    "datum": "2022-07-08",
     "customer": 855
   },
   {
@@ -147,10 +147,10 @@
     "caseNr": 101,
     "caseManager": "Darwin",
     "patient": 330,
-    "producer": "Steve",
-    "phase": "Bestätigung",
+    "producer": "",
+    "phase": "NC",
     "status": "Bearbeitbar",
-    "datum": "3/5/2022",
+    "datum": "2022-12-04",
     "customer": 499
   },
   {
@@ -158,10 +158,10 @@
     "caseNr": 377,
     "caseManager": "Esra",
     "patient": 109,
-    "producer": "Woodie",
-    "phase": "Bestätigung",
+    "producer": "",
+    "phase": "NC",
     "status": "Bearbeitbar",
-    "datum": "7/4/2022",
+    "datum": "2022-05-22",
     "customer": 372
   },
   {
@@ -170,9 +170,9 @@
     "caseManager": "Kimmi",
     "patient": 495,
     "producer": "Carling",
-    "phase": "Bestätigung",
+    "phase": "Produktion",
     "status": "Bearbeitbar",
-    "datum": "3/24/2022",
+    "datum": "2022-02-08",
     "customer": 845
   },
   {
@@ -182,8 +182,8 @@
     "patient": 438,
     "producer": "Angelo",
     "phase": "Produktion",
-    "status": "Bearbeitbar",
-    "datum": "6/13/2022",
+    "status": "In Bearbeitung",
+    "datum": "2022-06-06",
     "customer": 219
   },
   {
@@ -193,8 +193,8 @@
     "patient": 212,
     "producer": "Sisile",
     "phase": "Produktion",
-    "status": "Bearbeitbar",
-    "datum": "8/24/2021",
+    "status": "NC",
+    "datum": "2022-03-01",
     "customer": 858
   },
   {
@@ -204,8 +204,8 @@
     "patient": 667,
     "producer": "Kalinda",
     "phase": "Abschluss",
-    "status": "Bearbeitbar",
-    "datum": "3/20/2022",
+    "status": "Ausblendbar",
+    "datum": "2022-03-24",
     "customer": 104
   },
   {
@@ -215,8 +215,8 @@
     "patient": 651,
     "producer": "Alexandre",
     "phase": "Abschluss",
-    "status": "Bearbeitbar",
-    "datum": "8/14/2021",
+    "status": "Ausblendbar",
+    "datum": "2022-03-28",
     "customer": 711
   }
 ]
