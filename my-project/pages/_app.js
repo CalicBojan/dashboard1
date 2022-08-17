@@ -44,6 +44,7 @@ function MyApp({ Component, pageProps }) {
       username: "",
       password: ""
     });
+    setError("");
   }
 
   {/*
