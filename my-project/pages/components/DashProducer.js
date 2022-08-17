@@ -30,6 +30,7 @@ import data from "./MOCK_DATA.json";
 import Badge from "./Badge";
 import Home from "../index";
 import { Listbox } from '@headlessui/react'
+import Shrinkable from "./Shrinkable";
 
 
 const navigation = [
@@ -654,7 +655,7 @@ export default function DashProducer({Logout}) {
 
 
 
-
+                                    <Shrinkable />
 
 
 
