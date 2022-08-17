@@ -3,11 +3,16 @@ import React, { useState } from "react";
 import Home from "./index";
 import DashCaseManager from "./components/DashCaseManager";
 import LogoutAlert from "./components/LogoutAlert";
+import DashProducer from "./components/DashProducer";
 
 
 function MyApp({ Component, pageProps }) {
   const caseManagerUser = {
     username: "Case Manager",
+    password: "test123"
+  }
+  const producerUser = {
+    username: "Producer",
     password: "test123"
   }
   const [user, setUser] = useState({username:"", password:""});
@@ -21,7 +26,13 @@ function MyApp({ Component, pageProps }) {
         username: details.username,
         password: details.password
       })
-    }else{
+    } else if(details.username == producerUser.username && details.password == producerUser.password){
+      console.log("Logged in as Producer");
+      setUser({
+        username: details.username,
+        password: details.password
+      })
+    } else{
       console.log("Details do not match");
       setError("Nutzername oder Passwort falsch")
     }
@@ -49,10 +60,13 @@ function MyApp({ Component, pageProps }) {
   */}
   return(
       <div className="App">
-        {(user.username != "") ? (
+        {(user.username == "Case Manager") ? (
             <DashCaseManager Logout={Logout}/>
-        ):(
+        ):((user.username == "Producer") ? (
+            <DashProducer Logout={Logout}/>
+        ) : (
             <Home Login={Login} error={error}/>
+        )
         )}
       </div>
   );
