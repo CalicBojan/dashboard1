@@ -18,16 +18,12 @@ import {
 import {PlusIcon, SearchIcon, TrashIcon} from '@heroicons/react/solid'
 import LogoutAlert from "./LogoutAlert";
 import Logout from "./LogoutAlert";
-import AuftragsListe from "./AuftragsListe";
 import Abschluss from "./Abschluss";
 import styles from './DashCaseManager.module.css'
 import {CheckIcon, SelectorIcon} from '@heroicons/react/solid'
 import {Combobox} from '@headlessui/react'
-import FilterInput from "./FilterInput";
-import Auftrag from "./Auftrag";
 import Kalkulation from "./Kalkulation";
 import styles3 from './AuftragsListe.module.css'
-import Bestaetigung from "./Bestaetigung";
 import Produktion from "./Produktion";
 import styles2 from './Auftrag.module.css'
 import data from "./MOCK_DATA.json";
