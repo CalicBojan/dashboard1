@@ -1,6 +1,7 @@
 import React from "react";
 import {Fragment, useState} from 'react'
 import {Dialog, Menu, Transition} from '@headlessui/react'
+import {motion} from 'framer-motion';
 import {
     BellIcon,
     CalendarIcon,
@@ -184,7 +185,7 @@ export default function DashProducer({Logout}) {
         const filteredPreprocessingData = preprocessingFiltered.filter(item => {
             const fullPatient = `${item.patient}`;
             console.log(fullPatient);
-            if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
+            if(fullPatient.toLowerCase().includes(customer.toLowerCase())){
                 return item;
             }
         });
@@ -845,233 +846,283 @@ export default function DashProducer({Logout}) {
 
                                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
                                     {/*Button und Filter*/}
-                                    <div className="flex justify-evenly pt-5">
-                                        <div className={styles2.display}>
-                                            {(allDataAdmin=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataAdmin} titel={"Administration"}/>
-                                            )}
-                                            {(allDataCt=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataCt} titel={"CT-Scan"}/>
-                                            )}
-                                            {(allDataSegmentierung=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataSegmentierung} titel={"CT-Datensegmentierung"}/>
-                                            )}
-                                            {(allDataMatching=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataMatching} titel={"Implantatdesign Matching"}/>
-                                            )}
-                                            {(allDataPreprocessing=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataPreprocessing} titel={"Pre-Processing"}/>
-                                            )}
-                                            {(allDataSLM=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataSLM} titel={"SLM"}/>
-                                            )}
-                                            {(allDataWaerme=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataWaerme} titel={"Wärmebehandlung"}/>
-                                            )}
-                                            {(allDataDeburring=="") ? (
-                                                ""
-                                            ):(
-                                                <Shrinkable data={allDataDeburring} titel={"Deburring"}/>
-                                            )}
-                                        </div>
+                                    <div>
+                                        <div className="flex pt-5 justify-between pl-10">
+                                            <motion.div className={styles2.display}>
+                                                {(allDataAdmin=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataAdmin} titel={"Administration"}
+                                                                countBearbeitbar={allDataAdmin.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataAdmin.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataAdmin.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataAdmin.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataCt=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataCt} titel={"CT-Scan"}
+                                                                countBearbeitbar={allDataCt.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataCt.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataCt.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataCt.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataSegmentierung=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataSegmentierung} titel={"CT-Datensegmentierung"}
+                                                                countBearbeitbar={allDataSegmentierung.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataSegmentierung.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataSegmentierung.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataSegmentierung.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataMatching=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataMatching} titel={"Implantatdesign Matching"}
+                                                                countBearbeitbar={allDataMatching.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataMatching.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataMatching.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataMatching.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataPreprocessing=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataPreprocessing} titel={"Pre-Processing"}
+                                                                countBearbeitbar={allDataPreprocessing.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataPreprocessing.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataPreprocessing.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataPreprocessing.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataSLM=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataSLM} titel={"SLM"}
+                                                                countBearbeitbar={allDataSLM.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataSLM.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataSLM.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataSLM.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataWaerme=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataWaerme} titel={"Wärmebehandlung"}
+                                                                countBearbeitbar={allDataWaerme.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataWaerme.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataWaerme.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataWaerme.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                                {(allDataDeburring=="") ? (
+                                                    ""
+                                                ):(
+                                                    <Shrinkable data={allDataDeburring} titel={"Deburring"}
+                                                                countBearbeitbar={allDataDeburring.filter(d => d.status == "Bearbeitbar").length}
+                                                                countInBearbeitung={allDataDeburring.filter(d => d.status == "In Bearbeitung").length}
+                                                                countFreigeben={allDataDeburring.filter(d => d.status == "Freigeben").length}
+                                                                countNC={allDataDeburring.filter(d => d.status == "NC").length}
+
+                                                    />
+                                                )}
+                                            </motion.div>
 
 
 
 
 
-                                        <div className="block pt-12">
-                                            <div className="flex">
-                                                <button
-                                                    type="button"
-                                                    className="inline-flex items-center px-2 py-2 border border-transparent shadow-sm text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                                >
-                                                    <PlusIcon className="h-5 w-5" aria-hidden="true"/>
-                                                </button>
-                                                <div className="ml-4 self-center text-xl font-semibold text-indigo-600">
-                                                    Neuer Auftrag
+                                            <div className="block pt-12">
+                                                <div className="flex">
+                                                    <button
+                                                        type="button"
+                                                        className="inline-flex items-center px-2 py-2 border border-transparent shadow-sm text-sm font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    >
+                                                        <PlusIcon className="h-5 w-5" aria-hidden="true"/>
+                                                    </button>
+                                                    <div className="ml-4 self-center text-xl font-semibold text-indigo-600">
+                                                        Neuer Auftrag
+                                                    </div>
+                                                </div>
+
+
+                                                {/*Badge Bedingung*/}
+                                                <div className={styles2.badge}>
+                                                    {(filters.case != "") ? (
+                                                        <Badge Titel={"Auftrag"} />
+                                                    ):(
+                                                        ""
+                                                    )}
+                                                    {(filters.date != "") ? (
+                                                        <Badge Titel={"Datum"} />
+                                                    ):(
+                                                        ""
+                                                    )}
+                                                    {(filters.phase != "") ? (
+                                                        <Badge Titel={"Phase"} />
+                                                    ):(
+                                                        ""
+                                                    )}
+                                                    {(filters.status == "Bearbeitbar") | (filters.status == "NC") | (filters.status == "Freigeben") | (filters.status == "In Bearbeitung") | (filters.status == "Ausblendbar")? (
+                                                        <Badge Titel={"Status"} />
+                                                    ):(
+                                                        ""
+                                                    )}
+                                                    {(filters.customer != "") ? (
+                                                        <Badge Titel={"Kunde"} />
+                                                    ):(
+                                                        ""
+                                                    )}
+                                                    {(filters.patient != "") ? (
+                                                        <Badge Titel={"Patient"} />
+                                                    ):(
+                                                        ""
+                                                    )}
+                                                </div>
+                                                <div className={styles2.filterSection}>
+                                                    <div
+                                                        className="bg-white shadow-lg px-1 py-2 sm:px-2 w-56 sm:rounded-md text-xs inline-block align-bottom">
+
+                                                        {/*Datum Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="date"
+                                                                   className="block text-xs font-medium text-indigo-900">Datum</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="date" name="date" id="date" onChange={handleInput("date")} value={filters.date}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Datum"/>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*Phase Input*/}
+                                                        <div className="pl-2 pr-2 pt-2 pb-1">
+                                                            <label htmlFor="phase" className="block text-xs font-medium text-indigo-900 pb-1">
+                                                                Phase
+                                                            </label>
+                                                            <select
+                                                                id="phase"
+                                                                name="phase"
+                                                                className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                onChange={handleInput("phase")}
+                                                                placeholder="Phase"
+                                                            >
+                                                                <option value={filters.phase}></option>
+                                                                {phasesForDropdown().map((phase) =>(
+                                                                    <option value={phase} key={phase}>
+                                                                        {phase}
+                                                                    </option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+
+                                                        {/*Status Input*/}
+                                                        <div className="pl-2 pr-2 pt-2 pb-1">
+                                                            <label htmlFor="phase" className="block text-xs font-medium text-indigo-900 pb-1">
+                                                                Status
+                                                            </label>
+                                                            <select
+                                                                id="phase"
+                                                                name="phase"
+                                                                className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                onChange={handleInput("status")}
+                                                                placeholder="Phase"
+                                                            >
+                                                                <option value="select">Select</option>
+                                                                {statusesForDropdown().map((status) =>(
+                                                                    <option value={status} key={status}>
+                                                                        {status}
+                                                                    </option>
+                                                                ))}
+                                                            </select>
+                                                        </div>
+
+
+                                                        {/*KundenID Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="customer"
+                                                                   className="block text-xs font-medium text-indigo-900">Kunden-ID</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="text" name="customer" id="customer" onChange={handleInput("customer")} value={filters.customer}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Kunden-ID"/>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*PatientenID Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="patient"
+                                                                   className="block text-xs font-medium text-indigo-900">Patienten-ID</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="text" name="patient" id="patient" onChange={handleInput("patient")} value={filters.patient}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Patienten-ID"/>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*Auftragsnummer Input*/}
+                                                        <div className="pl-2 pr-2 pt-2">
+                                                            <label htmlFor="patient"
+                                                                   className="block text-xs font-medium text-indigo-900">Auftragsnummer</label>
+                                                            <div className="mt-1 relative rounded-xl text-black pb-1">
+                                                                <input type="text" name="case" id="case" onChange={handleInput("case")} value={filters.case}
+                                                                       className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
+                                                                       placeholder="Auftragsnummer"/>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="flex">
+                                                            {/*Checkbox*/}
+                                                            <div className=" pl-2 pr-0.5 mb-2 flex mt-1 justify-between items-center text-center content-center">
+                                                                <div className="flex place-items-center">
+                                                                    <input id="freigeben" aria-describedby="candidates-description"
+                                                                           name="freigeben" type="checkbox" onChange={handleInput("status")} value={"Freigeben"}
+                                                                           className="focus:ring-indigo-500 h-3 w-3 text-indigo-600 border-gray-300 rounded hover:cursor-pointer" />
+                                                                    <div className="ml-1 text-xs">
+                                                                        <label htmlFor="freigeben" className="font-thin text-gray-700">Freigeben</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {/*Checkbox*/}
+                                                            <div className=" pl-2 pr-2 mb-2 mt-1 flex justify-between items-center text-center content-center">
+                                                                <div className="flex place-items-center">
+                                                                    <input id="freigeben" aria-describedby="candidates-description"
+                                                                           name="freigeben" type="checkbox"
+                                                                           className="focus:ring-indigo-500 h-3 w-3 text-indigo-600 border-gray-300 rounded hover:cursor-pointer" />
+                                                                    <div className="ml-1 text-xs">
+                                                                        <label htmlFor="freigeben" className="font-thin text-gray-700">Wartung/Kalibrierung</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/*Filter zurücksetzen Button*/}
+                                                        <div className="pl-2 pr-2 mb-2">
+                                                            <button type="submit" onClick={handleSetFilterBack}
+                                                                    className="group w-full flex justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 hover:shadow-md focus: focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                                Zurücksetzen
+                                                            </button>
+                                                        </div>
+
+
+
+                                                    </div>
                                                 </div>
                                             </div>
 
 
-                                            {/*Badge Bedingung*/}
-                                            <div className={styles2.badge}>
-                                                {(filters.case != "") ? (
-                                                    <Badge Titel={"Auftrag"} />
-                                                ):(
-                                                    ""
-                                                )}
-                                                {(filters.date != "") ? (
-                                                    <Badge Titel={"Datum"} />
-                                                ):(
-                                                    ""
-                                                )}
-                                                {(filters.phase != "") ? (
-                                                    <Badge Titel={"Phase"} />
-                                                ):(
-                                                    ""
-                                                )}
-                                                {(filters.status == "Bearbeitbar") | (filters.status == "NC") | (filters.status == "Freigeben") | (filters.status == "In Bearbeitung") | (filters.status == "Ausblendbar")? (
-                                                    <Badge Titel={"Status"} />
-                                                ):(
-                                                    ""
-                                                )}
-                                                {(filters.customer != "") ? (
-                                                    <Badge Titel={"Kunde"} />
-                                                ):(
-                                                    ""
-                                                )}
-                                                {(filters.patient != "") ? (
-                                                    <Badge Titel={"Patient"} />
-                                                ):(
-                                                    ""
-                                                )}
-                                            </div>
-                                            <div className={styles2.filterSection}>
-                                                <div
-                                                    className="bg-white shadow-lg px-1 py-2 sm:px-2 w-56 sm:rounded-md text-xs inline-block align-bottom">
 
-                                                    {/*Datum Input*/}
-                                                    <div className="pl-2 pr-2 pt-2">
-                                                        <label htmlFor="date"
-                                                               className="block text-xs font-medium text-indigo-900">Datum</label>
-                                                        <div className="mt-1 relative rounded-xl text-black pb-1">
-                                                            <input type="date" name="date" id="date" onChange={handleInput("date")} value={filters.date}
-                                                                   className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                                   placeholder="Datum"/>
-                                                        </div>
-                                                    </div>
-
-                                                    {/*Phase Input*/}
-                                                    <div className="pl-2 pr-2 pt-2 pb-1">
-                                                        <label htmlFor="phase" className="block text-xs font-medium text-indigo-900 pb-1">
-                                                            Phase
-                                                        </label>
-                                                        <select
-                                                            id="phase"
-                                                            name="phase"
-                                                            className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                            onChange={handleInput("phase")}
-                                                            placeholder="Phase"
-                                                        >
-                                                            <option value={filters.phase}></option>
-                                                            {phasesForDropdown().map((phase) =>(
-                                                                <option value={phase} key={phase}>
-                                                                    {phase}
-                                                                </option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
-
-                                                    {/*Status Input*/}
-                                                    <div className="pl-2 pr-2 pt-2 pb-1">
-                                                        <label htmlFor="phase" className="block text-xs font-medium text-indigo-900 pb-1">
-                                                            Status
-                                                        </label>
-                                                        <select
-                                                            id="phase"
-                                                            name="phase"
-                                                            className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                            onChange={handleInput("status")}
-                                                            placeholder="Phase"
-                                                        >
-                                                            <option value="select">Select</option>
-                                                            {statusesForDropdown().map((status) =>(
-                                                                <option value={status} key={status}>
-                                                                    {status}
-                                                                </option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
-
-
-                                                    {/*KundenID Input*/}
-                                                    <div className="pl-2 pr-2 pt-2">
-                                                        <label htmlFor="customer"
-                                                               className="block text-xs font-medium text-indigo-900">Kunden-ID</label>
-                                                        <div className="mt-1 relative rounded-xl text-black pb-1">
-                                                            <input type="text" name="customer" id="customer" onChange={handleInput("customer")} value={filters.customer}
-                                                                   className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                                   placeholder="Kunden-ID"/>
-                                                        </div>
-                                                    </div>
-
-                                                    {/*PatientenID Input*/}
-                                                    <div className="pl-2 pr-2 pt-2">
-                                                        <label htmlFor="patient"
-                                                               className="block text-xs font-medium text-indigo-900">Patienten-ID</label>
-                                                        <div className="mt-1 relative rounded-xl text-black pb-1">
-                                                            <input type="text" name="patient" id="patient" onChange={handleInput("patient")} value={filters.patient}
-                                                                   className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                                   placeholder="Patienten-ID"/>
-                                                        </div>
-                                                    </div>
-
-                                                    {/*Auftragsnummer Input*/}
-                                                    <div className="pl-2 pr-2 pt-2">
-                                                        <label htmlFor="patient"
-                                                               className="block text-xs font-medium text-indigo-900">Auftragsnummer</label>
-                                                        <div className="mt-1 relative rounded-xl text-black pb-1">
-                                                            <input type="text" name="case" id="case" onChange={handleInput("case")} value={filters.case}
-                                                                   className="bg-white focus:border-indigo-500 block w-full px-4 sm:text-sm rounded-md border-2 border-indigo-900 outline-none"
-                                                                   placeholder="Auftragsnummer"/>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="flex">
-                                                        {/*Checkbox*/}
-                                                        <div className=" pl-2 pr-0.5 mb-2 flex mt-1 justify-between items-center text-center content-center">
-                                                            <div className="flex place-items-center">
-                                                                <input id="freigeben" aria-describedby="candidates-description"
-                                                                       name="freigeben" type="checkbox" onChange={handleInput("status")} value={"Freigeben"}
-                                                                       className="focus:ring-indigo-500 h-3 w-3 text-indigo-600 border-gray-300 rounded hover:cursor-pointer" />
-                                                                <div className="ml-1 text-xs">
-                                                                    <label htmlFor="freigeben" className="font-thin text-gray-700">Freigeben</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {/*Checkbox*/}
-                                                        <div className=" pl-2 pr-2 mb-2 mt-1 flex justify-between items-center text-center content-center">
-                                                            <div className="flex place-items-center">
-                                                                <input id="freigeben" aria-describedby="candidates-description"
-                                                                       name="freigeben" type="checkbox"
-                                                                       className="focus:ring-indigo-500 h-3 w-3 text-indigo-600 border-gray-300 rounded hover:cursor-pointer" />
-                                                                <div className="ml-1 text-xs">
-                                                                    <label htmlFor="freigeben" className="font-thin text-gray-700">Wartung/Kalibrierung</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    {/*Filter zurücksetzen Button*/}
-                                                    <div className="pl-2 pr-2 mb-2">
-                                                        <button type="submit" onClick={handleSetFilterBack}
-                                                                className="group w-full flex justify-center py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 hover:shadow-md focus: focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                            Zurücksetzen
-                                                        </button>
-                                                    </div>
-
-
-
-                                                </div>
-                                            </div>
                                         </div>
-
-
-
                                     </div>
                                     {modalOpen && <LogoutAlert Logout={Logout} setOpenModal={setModalOpen}/>}
                                 </div>
