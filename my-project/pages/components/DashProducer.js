@@ -26,7 +26,7 @@ import Kalkulation from "./Kalkulation";
 import styles3 from './AuftragsListe.module.css'
 import Produktion from "./Produktion";
 import styles2 from './Auftrag.module.css'
-import data from "./MOCK_DATA.json";
+import data from "./MOCK_DATA_PRODUCER.json"
 import Badge from "./Badge";
 import Home from "../index";
 import { Listbox } from '@headlessui/react'
@@ -63,6 +63,14 @@ export default function DashProducer({Logout}) {
     {/* Filtered List für Bestätigungsphase */}
     const abschlussFiltered = data.filter(d => d.phase == "Abschluss");
 
+    const adminitrationFiltered = data.filter(d => d.processStep == "Administration");
+    const ctScanFiltered = data.filter(d => d.processStep == "CT-Scan");
+    const segmentierungFiltered = data.filter(d => d.processStep == "CT-Datensegmentierung");
+    const matchingFiltered = data.filter(d => d.processStep == "Implantatdesign Matching");
+    const preprocessingFiltered = data.filter(d => d.processStep == "Pre-Processing");
+    const slmFiltered = data.filter(d => d.processStep == "SLM");
+    const waermeFiltered = data.filter(d => d.processStep == "Wärmebehandlung");
+    const deburringFiltered = data.filter(d => d.processStep == "Deburring");
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
@@ -130,8 +138,18 @@ export default function DashProducer({Logout}) {
     const [allDataProduktion, setDataProduktion] =useState(produktionFiltered);
     const [allDataAbschluss, setDataAbschluss] =useState(abschlussFiltered);
 
+    const [allDataAdmin, setDataAdmin] =useState(adminitrationFiltered);
+    const [allDataCt, setDataCt] =useState(ctScanFiltered);
+    const [allDataSegmentierung, setDataSegmentierung] =useState(segmentierungFiltered);
+    const [allDataMatching, setDataMatching] =useState(matchingFiltered);
+    const [allDataPreprocessing, setDataPreprocessing] =useState(preprocessingFiltered);
+    const [allDataSLM, setDataSLM] =useState(slmFiltered);
+    const [allDataWaerme, setDataWaerme] =useState(waermeFiltered);
+    const [allDataDeburring, setDataDeburring] =useState(deburringFiltered);
+
+
     const handleFilterCustomer = (customer) => {
-        const filteredData = auftraegeFiltered.filter(item => {
+        const filteredAdminData = adminitrationFiltered.filter(item => {
             const fullCostumer = `${item.customer}`;
             console.log("customer handler activated");
             console.log(fullCostumer);
@@ -139,7 +157,7 @@ export default function DashProducer({Logout}) {
                 return item;
             }
         });
-        const filteredKalkulationData = kalkulationFiltered.filter(item => {
+        const filteredCTData = ctScanFiltered.filter(item => {
             const fullCostumer = `${item.customer}`;
             console.log("customer handler activated");
             console.log(fullCostumer);
@@ -147,7 +165,7 @@ export default function DashProducer({Logout}) {
                 return item;
             }
         });
-        const filteredBestaetigungData = bestaetigungFiltered.filter(item => {
+        const filteredSegmentierungData = segmentierungFiltered.filter(item => {
             const fullCostumer = `${item.customer}`;
             console.log("customer handler activated");
             console.log(fullCostumer);
@@ -155,7 +173,7 @@ export default function DashProducer({Logout}) {
                 return item;
             }
         });
-        const filteredProduktionData = produktionFiltered.filter(item => {
+        const filteredMatchingData = matchingFiltered.filter(item => {
             const fullCostumer = `${item.customer}`;
             console.log("customer handler activated");
             console.log(fullCostumer);
@@ -163,7 +181,15 @@ export default function DashProducer({Logout}) {
                 return item;
             }
         });
-        const filteredAbschlussData = abschlussFiltered.filter(item => {
+        const filteredPreprocessingData = preprocessingFiltered.filter(item => {
+            const fullPatient = `${item.patient}`;
+            console.log(fullPatient);
+            if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredWaermeData = waermeFiltered.filter(item => {
             const fullCostumer = `${item.customer}`;
             console.log("customer handler activated");
             console.log(fullCostumer);
@@ -171,166 +197,253 @@ export default function DashProducer({Logout}) {
                 return item;
             }
         });
-        setData(filteredData);
-        setDataKalkulation(filteredKalkulationData);
-        setDataBestaetigung(filteredBestaetigungData);
-        setDataProduktion(filteredProduktionData);
-        setDataAbschluss(filteredAbschlussData);
+
+        const filteredSLMData = slmFiltered.filter(item => {
+            const fullCostumer = `${item.customer}`;
+            console.log("customer handler activated");
+            console.log(fullCostumer);
+            if(fullCostumer.toLowerCase().includes(customer.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredDeburringData = deburringFiltered.filter(item => {
+            const fullCostumer = `${item.customer}`;
+            console.log("customer handler activated");
+            console.log(fullCostumer);
+            if(fullCostumer.toLowerCase().includes(customer.toLowerCase())){
+                return item;
+            }
+        });
+        setDataAdmin(filteredAdminData);
+        setDataCt(filteredCTData);
+        setDataSegmentierung(filteredSegmentierungData);
+        setDataMatching(filteredMatchingData);
+        setDataPreprocessing(filteredPreprocessingData);
+        setDataSLM(filteredSLMData);
+        setDataWaerme(filteredWaermeData);
+        setDataDeburring(filteredDeburringData);
     }
 
     const handleFilterPatient = (patient) => {
-        const filteredData = auftraegeFiltered.filter(item => {
+        const filteredAdminData = adminitrationFiltered.filter(item => {
             const fullPatient = `${item.patient}`;
             console.log(fullPatient);
             if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredKalkulationData = kalkulationFiltered.filter(item => {
+        const filteredCTData = ctScanFiltered.filter(item => {
             const fullPatient = `${item.patient}`;
             console.log(fullPatient);
             if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredBestaetigungData = bestaetigungFiltered.filter(item => {
+        const filteredSegmentierungData = segmentierungFiltered.filter(item => {
             const fullPatient = `${item.patient}`;
             console.log(fullPatient);
             if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredProduktionData = produktionFiltered.filter(item => {
+        const filteredMatchingData = matchingFiltered.filter(item => {
             const fullPatient = `${item.patient}`;
             console.log(fullPatient);
             if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredAbschlussData = abschlussFiltered.filter(item => {
+        const filteredSLMData = slmFiltered.filter(item => {
             const fullPatient = `${item.patient}`;
             console.log(fullPatient);
             if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        setData(filteredData);
-        setDataKalkulation(filteredKalkulationData);
-        setDataBestaetigung(filteredBestaetigungData);
-        setDataProduktion(filteredProduktionData);
-        setDataAbschluss(filteredAbschlussData);
+        const filteredPreprocessingData = preprocessingFiltered.filter(item => {
+            const fullPatient = `${item.patient}`;
+            console.log(fullPatient);
+            if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+        const filteredWaermeData = waermeFiltered.filter(item => {
+            const fullPatient = `${item.patient}`;
+            console.log(fullPatient);
+            if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+        const filteredDeburringData = deburringFiltered.filter(item => {
+            const fullPatient = `${item.patient}`;
+            console.log(fullPatient);
+            if(fullPatient.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+
+        setDataAdmin(filteredAdminData);
+        setDataCt(filteredCTData);
+        setDataSegmentierung(filteredSegmentierungData);
+        setDataMatching(filteredMatchingData);
+        setDataPreprocessing(filteredPreprocessingData);
+        setDataSLM(filteredSLMData);
+        setDataWaerme(filteredWaermeData);
+        setDataDeburring(filteredDeburringData);
     }
 
     const handleFilterCase = (patient) => {
-        const filteredData = auftraegeFiltered.filter(item => {
+        const filteredAdminData = adminitrationFiltered.filter(item => {
             const fullCase = `${item.caseNr}`;
             console.log(fullCase);
             if(fullCase.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredKalkulationData = kalkulationFiltered.filter(item => {
+        const filteredCTData = ctScanFiltered.filter(item => {
             const fullCase = `${item.caseNr}`;
             console.log(fullCase);
             if(fullCase.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredBestaetigungData = bestaetigungFiltered.filter(item => {
+        const filteredSegmentierungData = segmentierungFiltered.filter(item => {
             const fullCase = `${item.caseNr}`;
             console.log(fullCase);
             if(fullCase.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredProduktionData = produktionFiltered.filter(item => {
+        const filteredMatchingData = matchingFiltered.filter(item => {
             const fullCase = `${item.caseNr}`;
             console.log(fullCase);
             if(fullCase.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        const filteredAbschlussData = abschlussFiltered.filter(item => {
+        const filteredSLMData = slmFiltered.filter(item => {
             const fullCase = `${item.caseNr}`;
             console.log(fullCase);
             if(fullCase.toLowerCase().includes(patient.toLowerCase())){
                 return item;
             }
         });
-        setData(filteredData);
-        setDataKalkulation(filteredKalkulationData);
-        setDataBestaetigung(filteredBestaetigungData);
-        setDataProduktion(filteredProduktionData);
-        setDataAbschluss(filteredAbschlussData);
+
+        const filteredPreprocessingData = preprocessingFiltered.filter(item => {
+            const fullCase = `${item.caseNr}`;
+            console.log(fullCase);
+            if(fullCase.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredWaermeData = waermeFiltered.filter(item => {
+            const fullCase = `${item.caseNr}`;
+            console.log(fullCase);
+            if(fullCase.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredDeburringData = deburringFiltered.filter(item => {
+            const fullCase = `${item.caseNr}`;
+            console.log(fullCase);
+            if(fullCase.toLowerCase().includes(patient.toLowerCase())){
+                return item;
+            }
+        });
+
+        setDataAdmin(filteredAdminData);
+        setDataCt(filteredCTData);
+        setDataSegmentierung(filteredSegmentierungData);
+        setDataMatching(filteredMatchingData);
+        setDataPreprocessing(filteredPreprocessingData);
+        setDataSLM(filteredSLMData);
+        setDataWaerme(filteredWaermeData);
+        setDataDeburring(filteredDeburringData);
     }
 
     const handleFilterDate = (date) => {
-        const filteredData = auftraegeFiltered.filter(item => {
+        const filteredAdminData = adminitrationFiltered.filter(item => {
             const fullDate = `${item.datum}`;
             console.log(fullDate);
             if(fullDate.includes(date)){
                 return item;
             }
         });
-        const filteredKalkulationData = kalkulationFiltered.filter(item => {
+        const filteredCTData = ctScanFiltered.filter(item => {
             const fullDate = `${item.datum}`;
             console.log(fullDate);
             if(fullDate.includes(date)){
                 return item;
             }
         });
-        const filteredBestaetigungData = bestaetigungFiltered.filter(item => {
+        const filteredSegmentierungData = segmentierungFiltered.filter(item => {
             const fullDate = `${item.datum}`;
             console.log(fullDate);
             if(fullDate.includes(date)){
                 return item;
             }
         });
-        const filteredProduktionData = produktionFiltered.filter(item => {
+        const filteredMatchingData = matchingFiltered.filter(item => {
             const fullDate = `${item.datum}`;
             console.log(fullDate);
             if(fullDate.includes(date)){
                 return item;
             }
         });
-        const filteredAbschlussData = abschlussFiltered.filter(item => {
+        const filteredSLMData = slmFiltered.filter(item => {
             const fullDate = `${item.datum}`;
             console.log(fullDate);
             if(fullDate.includes(date)){
                 return item;
             }
         });
-        setData(filteredData);
-        setDataKalkulation(filteredKalkulationData);
-        setDataBestaetigung(filteredBestaetigungData);
-        setDataProduktion(filteredProduktionData);
-        setDataAbschluss(filteredAbschlussData);
+
+        const filteredPreprocessingData = preprocessingFiltered.filter(item => {
+            const fullDate = `${item.datum}`;
+            console.log(fullDate);
+            if(fullDate.includes(date)){
+                return item;
+            }
+        });
+
+        const filteredWaermeData = waermeFiltered.filter(item => {
+            const fullDate = `${item.datum}`;
+            console.log(fullDate);
+            if(fullDate.includes(date)){
+                return item;
+            }
+        });
+
+        const filteredDeburringData = deburringFiltered.filter(item => {
+            const fullDate = `${item.datum}`;
+            console.log(fullDate);
+            if(fullDate.includes(date)){
+                return item;
+            }
+        });
+
+        setDataAdmin(filteredAdminData);
+        setDataCt(filteredCTData);
+        setDataSegmentierung(filteredSegmentierungData);
+        setDataMatching(filteredMatchingData);
+        setDataPreprocessing(filteredPreprocessingData);
+        setDataSLM(filteredSLMData);
+        setDataWaerme(filteredWaermeData);
+        setDataDeburring(filteredDeburringData);
     }
 
     const handleFilterPhase = (phase) => {
-        const filteredData = auftraegeFiltered.filter(item => {
+        const filteredAdminData = adminitrationFiltered.filter(item => {
             const fullPhase = `${item.phase}`;
             console.log(fullPhase);
             if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
                 return item;
             }
         });
-        const filteredKalkulationData = kalkulationFiltered.filter(item => {
-            const fullPhase = `${item.phase}`;
-            console.log(fullPhase);
-            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
-                return item;
-            }
-        });
-
-        const filteredBestaetigungData = bestaetigungFiltered.filter(item => {
-            const fullPhase = `${item.phase}`;
-            console.log(fullPhase);
-            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
-                return item;
-            }
-        });
-        const filteredProduktionData = produktionFiltered.filter(item => {
+        const filteredCTData = ctScanFiltered.filter(item => {
             const fullPhase = `${item.phase}`;
             console.log(fullPhase);
             if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
@@ -338,7 +451,14 @@ export default function DashProducer({Logout}) {
             }
         });
 
-        const filteredAbschlussData = abschlussFiltered.filter(item => {
+        const filteredSegmentierungData = segmentierungFiltered.filter(item => {
+            const fullPhase = `${item.phase}`;
+            console.log(fullPhase);
+            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
+                return item;
+            }
+        });
+        const filteredMatchingData = matchingFiltered.filter(item => {
             const fullPhase = `${item.phase}`;
             console.log(fullPhase);
             if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
@@ -346,15 +466,50 @@ export default function DashProducer({Logout}) {
             }
         });
 
-        setData(filteredData);
-        setDataKalkulation(filteredKalkulationData);
-        setDataBestaetigung(filteredBestaetigungData);
-        setDataProduktion(filteredProduktionData);
-        setDataAbschluss(filteredAbschlussData);
+        const filteredPreprocessingData = preprocessingFiltered.filter(item => {
+            const fullPhase = `${item.phase}`;
+            console.log(fullPhase);
+            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredSLMData = slmFiltered.filter(item => {
+            const fullPhase = `${item.phase}`;
+            console.log(fullPhase);
+            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredWaermeData = waermeFiltered.filter(item => {
+            const fullPhase = `${item.phase}`;
+            console.log(fullPhase);
+            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
+                return item;
+            }
+        });
+
+        const filteredDeburringData = deburringFiltered.filter(item => {
+            const fullPhase = `${item.phase}`;
+            console.log(fullPhase);
+            if(fullPhase.toLowerCase().includes(phase.toLowerCase())){
+                return item;
+            }
+        });
+
+        setDataAdmin(filteredAdminData);
+        setDataCt(filteredCTData);
+        setDataSegmentierung(filteredSegmentierungData);
+        setDataMatching(filteredMatchingData);
+        setDataPreprocessing(filteredPreprocessingData);
+        setDataSLM(filteredSLMData);
+        setDataWaerme(filteredWaermeData);
+        setDataDeburring(filteredDeburringData);
     }
 
     const handleFilterStatus = (status) => {
-        const filteredData = auftraegeFiltered.filter(item => {
+        const filteredAdminData = adminitrationFiltered.filter(item => {
             const fullStatus = `${item.status}`;
             const select ="select"
             console.log(fullStatus);
@@ -364,7 +519,7 @@ export default function DashProducer({Logout}) {
                 return item
             }
         });
-        const filteredKalkulationData = kalkulationFiltered.filter(item => {
+        const filteredCTData = ctScanFiltered.filter(item => {
             const fullStatus = `${item.status}`;
             const select ="select"
             console.log(fullStatus);
@@ -374,7 +529,7 @@ export default function DashProducer({Logout}) {
                 return item
             }
         });
-        const filteredBestaetigungData = kalkulationFiltered.filter(item => {
+        const filteredSegmentierungData = segmentierungFiltered.filter(item => {
             const fullStatus = `${item.status}`;
             const select ="select"
             console.log(fullStatus);
@@ -384,7 +539,7 @@ export default function DashProducer({Logout}) {
                 return item
             }
         });
-        const filteredProduktionData = produktionFiltered.filter(item => {
+        const filteredMatchingData = matchingFiltered.filter(item => {
             const fullStatus = `${item.status}`;
             const select ="select"
             console.log(fullStatus);
@@ -394,7 +549,7 @@ export default function DashProducer({Logout}) {
                 return item
             }
         });
-        const filteredAbschlussData = abschlussFiltered.filter(item => {
+        const filteredPreprocessingData = preprocessingFiltered.filter(item => {
             const fullStatus = `${item.status}`;
             const select ="select"
             console.log(fullStatus);
@@ -404,19 +559,60 @@ export default function DashProducer({Logout}) {
                 return item
             }
         });
-        setData(filteredData)
-        setDataKalkulation(filteredKalkulationData);
-        setDataBestaetigung(filteredBestaetigungData);
-        setDataProduktion(filteredProduktionData);
-        setDataAbschluss(filteredAbschlussData);
+
+        const filteredWaermeData = waermeFiltered.filter(item => {
+            const fullStatus = `${item.status}`;
+            const select ="select"
+            console.log(fullStatus);
+            if(fullStatus == status){
+                return item
+            }if(select == status){
+                return item
+            }
+        });
+
+        const filteredSLMData = slmFiltered.filter(item => {
+            const fullStatus = `${item.status}`;
+            const select ="select"
+            console.log(fullStatus);
+            if(fullStatus == status){
+                return item
+            }if(select == status){
+                return item
+            }
+        });
+
+        const filteredDeburringData = deburringFiltered.filter(item => {
+            const fullStatus = `${item.status}`;
+            const select ="select"
+            console.log(fullStatus);
+            if(fullStatus == status){
+                return item
+            }if(select == status){
+                return item
+            }
+        });
+
+
+        setDataAdmin(filteredAdminData);
+        setDataCt(filteredCTData);
+        setDataSegmentierung(filteredSegmentierungData);
+        setDataMatching(filteredMatchingData);
+        setDataPreprocessing(filteredPreprocessingData);
+        setDataSLM(filteredSLMData);
+        setDataWaerme(filteredWaermeData);
+        setDataDeburring(filteredDeburringData);
     }
 
     const handleSetFilterBack = () =>{
-        setData(auftraegeFiltered);
-        setDataKalkulation(kalkulationFiltered);
-        setDataBestaetigung(bestaetigungFiltered);
-        setDataProduktion(produktionFiltered);
-        setDataAbschluss(abschlussFiltered);
+        setDataAdmin(adminitrationFiltered);
+        setDataCt(ctScanFiltered);
+        setDataSegmentierung(segmentierungFiltered);
+        setDataMatching(matchingFiltered);
+        setDataPreprocessing(preprocessingFiltered);
+        setDataSLM(slmFiltered);
+        setDataWaerme(waermeFiltered);
+        setDataDeburring(deburringFiltered);
     };
 
 
@@ -649,13 +845,50 @@ export default function DashProducer({Logout}) {
 
                                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
                                     {/*Button und Filter*/}
-                                    <div className="flex justify-evenly">
+                                    <div className="flex justify-evenly pt-5">
+                                        <div className={styles2.display}>
+                                            {(allDataAdmin=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataAdmin} titel={"Administration"}/>
+                                            )}
+                                            {(allDataCt=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataCt} titel={"CT-Scan"}/>
+                                            )}
+                                            {(allDataSegmentierung=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataSegmentierung} titel={"CT-Datensegmentierung"}/>
+                                            )}
+                                            {(allDataMatching=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataMatching} titel={"Implantatdesign Matching"}/>
+                                            )}
+                                            {(allDataPreprocessing=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataPreprocessing} titel={"Pre-Processing"}/>
+                                            )}
+                                            {(allDataSLM=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataSLM} titel={"SLM"}/>
+                                            )}
+                                            {(allDataWaerme=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataWaerme} titel={"Wärmebehandlung"}/>
+                                            )}
+                                            {(allDataDeburring=="") ? (
+                                                ""
+                                            ):(
+                                                <Shrinkable data={allDataDeburring} titel={"Deburring"}/>
+                                            )}
+                                        </div>
 
-
-
-
-
-                                    <Shrinkable />
 
 
 

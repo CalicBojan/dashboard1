@@ -4,11 +4,9 @@ import styles2 from "./Auftrag.module.css";
 import React, {useState} from "react";
 import data from "./MOCK_DATA.json";
 
-export default function Shrinkable() {
+export default function Shrinkable({ data, titel }) {
     const [isOpen, setIsOpen] = useState(false);
     {/* Filtered List für Kalkulationsphase */}
-    const kalkulationFiltered = data.filter(d => d.phase == "Kalkulation");
-    const [allDataKalkulation, setDataKalkulation] =useState(kalkulationFiltered);
     return (
         <div layout className="block pl-1 pr-1">
             <motion.div onClick={() => setIsOpen(!isOpen)}
@@ -22,7 +20,7 @@ export default function Shrinkable() {
                     {(!isOpen) ? (
                         <div className={styles3.columnTestShrinked}>
                             <div className="justify-center text-center">
-                                <h1 className="text-2xl font-semibold text-indigo-600 pb-2 rotate-180 justify-center flex">Kalkulation</h1>
+                                <h1 className="text-2xl font-semibold text-indigo-600 pb-2 rotate-180 justify-center flex">{titel}</h1>
                             </div>
                         </div>
                     ) : (
@@ -35,7 +33,7 @@ export default function Shrinkable() {
                         <motion.div>
                             <div className={styles3.columnTest}>
                                 <ul role="list" className="space-y-2 block justify-center">
-                                    {allDataKalkulation.map((auftrag) => (
+                                    {data.map((auftrag) => (
                                         <div className={styles2.case}>
                                             <li key={auftrag.id}
                                                 className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
