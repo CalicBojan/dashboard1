@@ -19,7 +19,6 @@ import {PlusIcon, SearchIcon, TrashIcon} from '@heroicons/react/solid'
 import LogoutAlert from "./LogoutAlert";
 import Logout from "./LogoutAlert";
 import Abschluss from "./Abschluss";
-import styles from './DashCaseManager.module.css'
 import {CheckIcon, SelectorIcon} from '@heroicons/react/solid'
 import {Combobox} from '@headlessui/react'
 import Kalkulation from "./Kalkulation";

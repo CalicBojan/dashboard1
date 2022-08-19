@@ -3,7 +3,6 @@ import styles3 from "./AuftragsListe.module.css";
 import styles2 from "./Auftrag.module.css";
 import React, {useState} from "react";
 import data from "./MOCK_DATA.json";
-import ShrinkedBadge from "./ShrinkedBadge";
 import styles from "./Badge.module.css";
 
 export default function Shrinkable({ data, titel, countBearbeitbar, countInBearbeitung, countFreigeben, countNC }) {
