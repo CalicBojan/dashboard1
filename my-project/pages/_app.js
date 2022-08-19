@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Home from "./index";
 import DashCaseManager from "./components/DashCaseManager";
 import LogoutAlert from "./components/LogoutAlert";
@@ -46,6 +46,10 @@ function MyApp({ Component, pageProps }) {
     });
     setError("");
   }
+
+  useEffect(() => {
+    document.title = "Dashboard für medizinische 3D-Print-Produkte und Herstellungsprozesse"
+  }, []);
 
   {/*
     return(

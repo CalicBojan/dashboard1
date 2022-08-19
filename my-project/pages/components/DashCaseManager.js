@@ -17,18 +17,14 @@ import {
 } from '@heroicons/react/outline'
 import {PlusIcon, SearchIcon, TrashIcon} from '@heroicons/react/solid'
 import LogoutAlert from "./LogoutAlert";
-import Logout from "./LogoutAlert";
 import Abschluss from "./Abschluss";
-import {CheckIcon, SelectorIcon} from '@heroicons/react/solid'
-import {Combobox} from '@headlessui/react'
 import Kalkulation from "./Kalkulation";
 import styles3 from './AuftragsListe.module.css'
 import Produktion from "./Produktion";
 import styles2 from './Auftrag.module.css'
 import data from "./MOCK_DATA.json";
 import Badge from "./Badge";
-import Home from "../index";
-import { Listbox } from '@headlessui/react'
+
 
 
 const navigation = [
@@ -372,7 +368,7 @@ export default function DashCaseManager({Logout}) {
                 return item
             }
         });
-        const filteredBestaetigungData = kalkulationFiltered.filter(item => {
+        const filteredBestaetigungData = bestaetigungFiltered.filter(item => {
             const fullStatus = `${item.status}`;
             const select ="select"
             console.log(fullStatus);
@@ -658,7 +654,7 @@ export default function DashCaseManager({Logout}) {
                                                         {allDataKalkulation.map((auftrag) => (
                                                             <div className={styles2.case}>
                                                                 <li key={auftrag.id}
-                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
+                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs hover:drop-shadow-xl hover:cursor-pointer">
                                                                     {/* Content */}
                                                                     <div className={styles2.fntSize}>
                                                                         <div className="flex justify-between">
@@ -722,7 +718,7 @@ export default function DashCaseManager({Logout}) {
                                                         {allData.map((auftrag) => (
                                                             <div className={styles2.case}>
                                                                 <li key={auftrag.id}
-                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
+                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs hover:drop-shadow-xl hover:cursor-pointer">
                                                                     {/* Content */}
                                                                     <div className={styles2.fntSize}>
                                                                         <div className="flex justify-between">
@@ -786,7 +782,7 @@ export default function DashCaseManager({Logout}) {
                                                         {allDataBestaetigung.map((auftrag) => (
                                                             <div className={styles2.case}>
                                                                 <li key={auftrag.id}
-                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
+                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs hover:drop-shadow-xl hover:cursor-pointer">
                                                                     {/* Content */}
                                                                     <div className={styles2.fntSize}>
                                                                         <div className="flex justify-between">
@@ -850,7 +846,7 @@ export default function DashCaseManager({Logout}) {
                                                         {allDataProduktion.map((auftrag) => (
                                                             <div className={styles2.case}>
                                                                 <li key={auftrag.id}
-                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
+                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs hover:drop-shadow-xl hover:cursor-pointer">
                                                                     {/* Content */}
                                                                     <div className={styles2.fntSize}>
                                                                         <div className="flex justify-between">
@@ -914,7 +910,7 @@ export default function DashCaseManager({Logout}) {
                                                         {allDataAbschluss.map((auftrag) => (
                                                             <div className={styles2.case}>
                                                                 <li key={auftrag.id}
-                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
+                                                                    className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs hover:drop-shadow-xl hover:cursor-pointer">
                                                                     {/* Content */}
                                                                     <div className={styles2.fntSize}>
                                                                         <div className="flex justify-between">

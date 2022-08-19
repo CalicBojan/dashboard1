@@ -67,7 +67,7 @@ export default function Shrinkable({ data, titel, countBearbeitbar, countInBearb
                                     {data.map((auftrag) => (
                                         <div className={styles2.case}>
                                             <li key={auftrag.id}
-                                                className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs">
+                                                className="bg-white shadow-md overflow-hidden px-1 py-3 sm:px-4 sm:rounded-md text-xs hover:drop-shadow-xl hover:cursor-pointer">
                                                 {/* Content */}
                                                 <div className={styles2.fntSize}>
                                                     <div className="flex justify-between">
