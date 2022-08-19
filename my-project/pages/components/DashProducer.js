@@ -76,6 +76,7 @@ export default function DashProducer({Logout}) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 
+
     const [filters, setFilters] = useState({
         customer: "",
         patient: "",
@@ -147,7 +148,6 @@ export default function DashProducer({Logout}) {
     const [allDataSLM, setDataSLM] =useState(slmFiltered);
     const [allDataWaerme, setDataWaerme] =useState(waermeFiltered);
     const [allDataDeburring, setDataDeburring] =useState(deburringFiltered);
-
 
     const handleFilterCustomer = (customer) => {
         const filteredAdminData = adminitrationFiltered.filter(item => {
@@ -1086,7 +1086,7 @@ export default function DashProducer({Logout}) {
                                                             <div className=" pl-2 pr-0.5 mb-2 flex mt-1 justify-between items-center text-center content-center">
                                                                 <div className="flex place-items-center">
                                                                     <input id="freigeben" aria-describedby="candidates-description"
-                                                                           name="freigeben" type="checkbox" onChange={handleInput("status")} value={"Freigeben"}
+                                                                           name="freigeben" type="checkbox" onChange={handleInput("status")} value={filters.status}
                                                                            className="focus:ring-indigo-500 h-3 w-3 text-indigo-600 border-gray-300 rounded hover:cursor-pointer" />
                                                                     <div className="ml-1 text-xs">
                                                                         <label htmlFor="freigeben" className="font-thin text-gray-700">Freigeben</label>
@@ -1096,8 +1096,8 @@ export default function DashProducer({Logout}) {
                                                             {/*Checkbox*/}
                                                             <div className=" pl-2 pr-2 mb-2 mt-1 flex justify-between items-center text-center content-center">
                                                                 <div className="flex place-items-center">
-                                                                    <input id="freigeben" aria-describedby="candidates-description"
-                                                                           name="freigeben" type="checkbox"
+                                                                    <input id="wartung" aria-describedby="candidates-description"
+                                                                           name="wartung" type="checkbox"
                                                                            className="focus:ring-indigo-500 h-3 w-3 text-indigo-600 border-gray-300 rounded hover:cursor-pointer" />
                                                                     <div className="ml-1 text-xs">
                                                                         <label htmlFor="freigeben" className="font-thin text-gray-700">Wartung/Kalibrierung</label>
